@@ -115,6 +115,7 @@ section {
 
 .home-img img {
     width: 35vw;
+    border-radius: 5em;
     animation: floatImage 4s ease-in-out infinite;
 }
 
@@ -200,7 +201,8 @@ span {
 }
 
 .about-img img {
-    width: 35vw;
+    width: 400px;
+    height: 350px;
     border-radius: 1rem;
 }
 
@@ -619,7 +621,8 @@ span {
     }
 
     .about img {
-        width: 50vw;
+        width: 300px;
+        height: 280px;
         margin-top: 3rem;
     }
 
