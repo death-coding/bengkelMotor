@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Chat</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+      .chat-container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        border: 1px solid #ccc;
+      }
+      .chat-header {
+        background: #00b894;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-size: 18px;
+      }
+      .chat-box {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        background: #f1f1f1;
+        display: flex;
+        flex-direction: column;
+      }
+      .bot-message,
+      .user-message {
+        padding: 8px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        width: fit-content;
+        max-width: 80%;
+      }
+      .bot-message {
+        background: #00b894;
+        color: white;
+        align-self: flex-start; /* Pesan bot di kiri */
+        text-align: left;
+      }
+      .user-message {
+        background: #ddd;
+        align-self: flex-end; /* Pesan user di kanan */
+        text-align: right;
+      }
+      .chat-input {
+        display: flex;
+        justify-content: flex-end; /* Posisi input ke kanan */
+        padding: 10px;
+        background: white;
+      }
+      .chat-input input {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+      }
+      .chat-input button {
+        background: #00b894;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="chat-header">Live Chat</div>
+      <div class="chat-box" id="chat-box">
+        <p class="bot-message">Halo! Ada yang bisa kami bantu?</p>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chat-input" placeholder="Ketik pesan..." />
+        <button id="send-btn">Kirim</button>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("send-btn")
+        .addEventListener("click", sendMessage);
+      document
+        .getElementById("chat-input")
+        .addEventListener("keypress", function (event) {
+          if (event.key === "Enter") {
+            event.preventDefault(); // Mencegah efek default Enter (misalnya, baris baru di input)
+            sendMessage();
+          }
+        });
+
+      function sendMessage() {
+        let input = document.getElementById("chat-input");
+        let message = input.value.trim().toLowerCase();
+        let chatBox = document.getElementById("chat-box");
+
+        if (message) {
+          // Menampilkan pesan user
+          let userMessage = document.createElement("p");
+          userMessage.classList.add("user-message");
+          userMessage.textContent = input.value;
+          chatBox.appendChild(userMessage);
+
+          // Respons bot berdasarkan kata kunci
+          let botMessage = document.createElement("p");
+          botMessage.classList.add("bot-message");
+
+          if (["halo", "hallo", "hai", "hello"].includes(message)) {
+            botMessage.textContent =
+              "Halo! Selamat datang di bengkel kami. Ada yang bisa kami bantu? Silakan tanyakan tentang layanan atau suku cadang yang Anda butuhkan.";
+          } else if (
+            ["oke", "terimakasih", "terima kasih", "baik"].includes(message)
+          ) {
+            botMessage.textContent =
+              "Terima kasih telah mengunjungi bengkel kami! Jika motor Anda membutuhkan perawatan atau suku cadang, jangan ragu untuk datang kembali. Kami siap membantu!";
+          } else {
+            botMessage.textContent =
+              "Terima kasih atas waktu luang Anda. Saat ini sistem sedang sibuk, jika membutuhkan informasi lebih lanjut mengenai layanan, perbaikan atau suku cadang, silakan hubungi kami atau datang langsung ke bengkel pada alamat dan form yang tersedia di website kami.";
+          }
+
+          setTimeout(() => {
+            chatBox.appendChild(botMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+          }, 1500); // Bot menjawab setelah 1,5 detik
+
+          chatBox.scrollTop = chatBox.scrollHeight;
+          input.value = "";
+        }
+      }
+    </script>
+  </body>
+</html>
