@@ -81,9 +81,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
 
   // Cek jika ada yang kosong
   if (!name || !email || !phone || !subject || !message) {
-    alert(
-      "\nPlease fill in all fields! \n--\nHarap isi semua kolom terlebih dahulu!"
-    );
+    alert("Harap isi semua kolom terlebih dahulu!");
     return;
   }
 

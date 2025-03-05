@@ -589,6 +589,10 @@ span {
         font-size: 2rem;
         margin: 3rem 0;
     }
+
+    .products-box .products-layer {
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 710px) {
@@ -615,7 +619,7 @@ span {
 
     .about img {
         width: 50vw;
-        margin-top: 4rem;
+        margin-top: 3rem;
     }
 
     .services h2 {
@@ -656,6 +660,10 @@ span {
 @media (max-width: 450px) {
     html {
         font-size: 50%;
+    }
+
+    .home-content h1 {
+        font-size: 4.5rem;
     }
 
     .contact form .input-box input {
