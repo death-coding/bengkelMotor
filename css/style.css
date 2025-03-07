@@ -59,7 +59,7 @@ section {
 }
 
 .header.sticky {
-    border-bottom: .1rem solid rgba(0, 0, 0, .2);
+    border-bottom: .1rem solid rgba(11, 202, 7, 0.687);
 }
 
 .logo img {
@@ -571,7 +571,7 @@ span {
         left: 0;
         width: 100%;
         padding: 1rem 3%;
-        background: var(--bg-color);
+        background: var(--second-bg-color);
         border-top: .1rem solid rgba(0, 0, 0, .2);
         box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
         display: none;
@@ -659,6 +659,15 @@ span {
     .products h4 {
         font-size: 3rem;
     }
+
+    .footer {
+        flex-direction: column-reverse;
+    }
+
+    .footer p {
+        text-align: center;
+        margin-top: 2rem;
+    }
 }
 
 @media (max-width: 450px) {
@@ -680,12 +689,5 @@ span {
         width: 90vw;
     }
 
-    .footer {
-        flex-direction: column-reverse;
-    }
 
-    .footer p {
-        text-align: center;
-        margin-top: 2rem;
-    }
 }
